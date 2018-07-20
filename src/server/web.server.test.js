@@ -1,0 +1,21 @@
+import WebServer from './web.server'
+
+describe('started', () => {
+  let webServer = null
+
+  beforeAll(() => {
+    webServer = new WebServer()
+  })
+
+  test('should start and trigger a callback', async() => {
+    expect.assertions(1)
+    let promise = webServer.start()
+    await expect(promise).resolves.toBeUndefined()
+  })
+
+  test('should stop and trigger a callback', async() => {
+    expect.assertions(1)
+    let promise = webServer.stop()
+    await expect(promise).resolves.toBeUndefined()
+  })
+})

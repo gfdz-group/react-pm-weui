@@ -1,0 +1,10 @@
+#Node
+node_modules/
+.svn
+.DS_Store
+
+#Project
+dist/
+cache-api/
+
+package-lock.json
