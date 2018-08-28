@@ -3,6 +3,7 @@ const autoprefixer = require('autoprefixer');
 const nodeExternals = require('webpack-node-externals')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const webpack = require('webpack')
 
 const moduleObj = {
   rules: [
@@ -43,7 +44,8 @@ const moduleObj = {
 
 const client = {
   entry: {
-    'client': './src/client/index.js'
+    vendors: ['react','react-dom','react-router-dom','react-weui','weui'],
+    client: './src/client/index.js',
   },
   target: 'web',
   output: {
@@ -52,25 +54,35 @@ const client = {
   },
   devtool: 'cheap-eval-source-map',
   module: moduleObj,
+  devServer: {
+    host: '0.0.0.0',
+    disableHostCheck: true,
+    proxy: {
+      '/api': 'http://192.168.2.198'
+    },
+    port: 3000,
+    historyApiFallback: true,
+    // hot: true,
+  },
   plugins: [
     new HtmlWebPackPlugin({
       template: 'src/client/index.html'
     }),
-    new ExtractTextPlugin("styles.css"),
+    
+    new ExtractTextPlugin({
+      filename: "styles.css",
+      allChunks: true,
+    }),
+
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['vendors','manifest'],
+      minChunks: 2,
+    }),
+
+    new webpack.optimize.UglifyJsPlugin({
+      output: { comments: false },
+    }),
   ]
 }
 
-const server = {
-  entry: {
-    'server': './src/server/index.js'
-  },
-  target: 'node',
-  output: {
-    filename: '[name].js',
-    path: path.resolve(__dirname, 'dist')
-  },
-  module: moduleObj,
-  externals: [nodeExternals()]
-}
-
-module.exports = [client, server]
+module.exports = client

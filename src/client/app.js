@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Switch, Route, Link } from 'react-router-dom'
+import URI from 'urijs'
 import {
   HouseBinding,
   Expense,
@@ -24,17 +25,53 @@ import { Page, TabBar, TabBarItem, Tab, TabBody } from 'react-weui'
 import navBtnIcon from './assets/icon_nav_button.png'
 import navMsgIcon from './assets/icon_nav_msg.png'
 import navCellIcon from './assets/icon_nav_cell.png'
-import 'weui'
-import 'react-weui/build/packages/react-weui.css'
-import './styles/home.less';
 import ServicePage from '../client/pages/service'
 import LifePage from '../client/pages/life'
+
+const APP_ID = 'wxd71b26449d78607a'
 
 class Home extends Component {
   constructor(props) {
     super(props)
     this.state = { tab: 2 }
   }
+
+  componentDidMount() {
+    const uri = new URI(document.location.href);
+    const query = uri.query(true);
+    const { code } = query
+    if (!Boolean(code)) {
+      document.location = this.generateGetCodeUrl(document.location.href);
+    } else {
+      this.getToken(code);
+    }
+  }
+
+  async getToken(code) {
+    const res = await fetch('/api/jwt/getToken.do', {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body:  JSON.stringify({ code }),
+      method: 'POST',
+      credentials: 'same-origin',
+    });
+    const body = await res.json();
+    return body;
+  }
+
+  generateGetCodeUrl(redirectURL) {
+    return new URI('https://open.weixin.qq.com/connect/oauth2/authorize')
+      .addQuery("appid", APP_ID)
+      .addQuery("redirect_uri", redirectURL)
+      .addQuery("response_type", "code")
+      .addQuery("scope", "snsapi_base")
+      .addQuery("response_type", "code")
+      .hash("wechat_redirect")
+      .toString();
+  }
+
   render() {
     return (
       <Page infiniteLoader={false}>

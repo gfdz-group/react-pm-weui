@@ -15,7 +15,6 @@ import { Page,
 } from 'react-weui'
 import { Link } from 'react-router-dom'
 import { ServicePhone } from '../components'
-import '../styles/service-page.less'
 
 const IconBox = (props) => {
   return (

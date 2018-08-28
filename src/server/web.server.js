@@ -6,9 +6,11 @@ export default class WebServer {
   constructor() {
     this.app = express()
     this.apiCacheProxy = new APICacheProxy({
-      apiUrl: 'http://192.168.17.104/',
+      cacheEnabled: false,
+      apiUrl: 'http://192.168.2.198/',
       cacheDir: 'cache-api/',
 	    localURLReplace: function(url) {
+        console.log('urL', url)
 		    return url.replace('/api/', '/')
 	    }
     });
