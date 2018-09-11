@@ -25,6 +25,7 @@ import navCellIcon from './assets/icon_nav_cell.png'
 import ServicePage from '../client/pages/service'
 import LifePage from '../client/pages/life'
 import AuthService from './components/auth/AuthService'
+import withAuth from './components/auth/withAuth'
 
 class Home extends Component {
   constructor(props) {
@@ -34,8 +35,6 @@ class Home extends Component {
   }
 
   render() {
-    const profile = this.auth.getProfile();
-    console.log(profile);
     return (
       <Page infiniteLoader={false}>
         <Tab>
@@ -110,4 +109,4 @@ const App = () => (
   </div>
 )
 
-export default App;
+export default withAuth(App);
