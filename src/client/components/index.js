@@ -17,6 +17,7 @@ import Notice from './pm/Notice'
 import PhoneNumList from './pm/PhoneNumList'
 import PaymentList from './pm/PaymentList'
 import Payment from './pm/Payment'
+import HouseList from './pm/HouseList'
 
 export {
   /** pm */
@@ -35,5 +36,6 @@ export {
   Notice,
   PhoneNumList,
   PaymentList,
-  Payment
+  Payment,
+  HouseList
 }

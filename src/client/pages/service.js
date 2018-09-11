@@ -93,7 +93,9 @@ class ServicePage extends Component {
             <div className="pt-10 pb-10">
               <Flex>
                 <IconBox icon={<Icon value="success-circle" />} name="余额" />
-                <IconBox icon={<Icon value="waiting-circle" />} name="房源" />
+                <Link to="/pm/list/houses">
+                  <IconBox icon={<Icon value="waiting-circle" />} name="房源" />
+                </Link>
                 <IconBox icon={<Icon value="info-circle" />} name="订单" />
                 <IconBox icon={<Icon value="cancel" />} name="积分" />
               </Flex>

@@ -1,25 +1,22 @@
 import React, { Component } from 'react'
 import { Switch, Route, Link } from 'react-router-dom'
-import URI from 'urijs'
 import {
   HouseBinding,
   Expense,
   PmExpense,
   PhoneNumList,
-
   RepairForm,
   RepairList,
   Repair,
-
   SuggestionForm,
   SuggestionList,
   Suggestion,
-
   NoticeList,
   Notice,
-
   PaymentList,
-  Payment
+  Payment,
+  HouseList
+
 } from './components'
 import { Page, TabBar, TabBarItem, Tab, TabBody } from 'react-weui'
 import navBtnIcon from './assets/icon_nav_button.png'
@@ -27,52 +24,18 @@ import navMsgIcon from './assets/icon_nav_msg.png'
 import navCellIcon from './assets/icon_nav_cell.png'
 import ServicePage from '../client/pages/service'
 import LifePage from '../client/pages/life'
-
-const APP_ID = 'wxd71b26449d78607a'
+import AuthService from './components/auth/AuthService'
 
 class Home extends Component {
   constructor(props) {
     super(props)
+    this.auth = new AuthService();
     this.state = { tab: 2 }
   }
 
-  componentDidMount() {
-    const uri = new URI(document.location.href);
-    const query = uri.query(true);
-    const { code } = query
-    if (!Boolean(code)) {
-      document.location = this.generateGetCodeUrl(document.location.href);
-    } else {
-      this.getToken(code);
-    }
-  }
-
-  async getToken(code) {
-    const res = await fetch('/api/jwt/getToken.do', {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body:  JSON.stringify({ code }),
-      method: 'POST',
-      credentials: 'same-origin',
-    });
-    const body = await res.json();
-    return body;
-  }
-
-  generateGetCodeUrl(redirectURL) {
-    return new URI('https://open.weixin.qq.com/connect/oauth2/authorize')
-      .addQuery("appid", APP_ID)
-      .addQuery("redirect_uri", redirectURL)
-      .addQuery("response_type", "code")
-      .addQuery("scope", "snsapi_base")
-      .addQuery("response_type", "code")
-      .hash("wechat_redirect")
-      .toString();
-  }
-
   render() {
+    const profile = this.auth.getProfile();
+    console.log(profile);
     return (
       <Page infiniteLoader={false}>
         <Tab>
@@ -114,34 +77,37 @@ class Home extends Component {
 }
 
 const App = () => (
-  <Switch>
-    <Route exact path="/" component={Home}/>
-    <Route path="/binding" component={HouseBinding} />
-    {/** 公告详情 */}
-    <Route path="/pm/notice/:id" component={Notice} />
-    {/** 便民服务 */}
-    <Route path="/pm/service" component={PhoneNumList} />
-    {/** 缴费单详情 */}
-    <Route path="/pm/payment/:id" component={Payment} />
-    {/** 保修单详情 */}
-    <Route path="/pm/repair/:id" component={Repair} />
-    {/** 投诉建议详情 */}
-    <Route path="/pm/suggestion/:id" component={Suggestion} />
-    {/** 列表 */}
-      <Route exact path="/pm/list/notices" component={NoticeList} />
-      <Route exact path="/pm/list/payments" component={PaymentList} />
-      <Route exact path="/pm/list/repairs" component={RepairList} />
-      <Route exact path="/pm/list/suggestions" component={SuggestionList} />
-    {/** 表单 */}
-      {/** 生活缴费 */}
-      <Route path="/pm/expense" component={Expense} />
-      {/** 物业缴费 */}
-      <Route path="/pm/pm-expense" component={PmExpense} />
-      {/** 物业报修 */}
-      <Route exact path="/pm/repair" component={RepairForm} />
-      {/** 投诉建议 */}
-      <Route exact path="/pm/suggestion" component={SuggestionForm} />
-  </Switch>
+  <div>
+    <Home />
+    <Switch style={{display: 'none'}}>
+      <Route path="/binding" component={HouseBinding} />
+      {/** 公告详情 */}
+      <Route path="/pm/notice/:id" component={Notice} />
+      {/** 便民服务 */}
+      <Route path="/pm/service" component={PhoneNumList} />
+      {/** 缴费单详情 */}
+      <Route path="/pm/payment/:id" component={Payment} />
+      {/** 保修单详情 */}
+      <Route path="/pm/repair/:id" component={Repair} />
+      {/** 投诉建议详情 */}
+      <Route path="/pm/suggestion/:id" component={Suggestion} />
+      {/** 列表 */}
+        <Route exact path="/pm/list/notices" component={NoticeList} />
+        <Route exact path="/pm/list/payments" component={PaymentList} />
+        <Route exact path="/pm/list/repairs" component={RepairList} />
+        <Route exact path="/pm/list/suggestions" component={SuggestionList} />
+        <Route exact path="/pm/list/houses" component={HouseList} />
+      {/** 表单 */}
+        {/** 生活缴费 */}
+        <Route path="/pm/expense" component={Expense} />
+        {/** 物业缴费 */}
+        <Route path="/pm/pm-expense" component={PmExpense} />
+        {/** 物业报修 */}
+        <Route exact path="/pm/repair" component={RepairForm} />
+        {/** 投诉建议 */}
+        <Route exact path="/pm/suggestion" component={SuggestionForm} />
+    </Switch>
+  </div>
 )
 
 export default App;
