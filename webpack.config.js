@@ -10,7 +10,10 @@ const moduleObj = {
     {
       test: /\.js$/,
       exclude: /node_modules/,
-      loaders: ['babel-loader']
+      loader: 'babel-loader',
+      query: {
+        plugins: ['transform-object-rest-spread']
+      }
     },
     {
       test: /\.css$|\.less$/,
@@ -58,7 +61,7 @@ const client = {
     host: '0.0.0.0',
     disableHostCheck: true,
     proxy: {
-      '/api': 'http://192.168.2.198'
+      '/api': 'http://192.168.17.104'
     },
     port: 3000,
     historyApiFallback: true,
@@ -68,7 +71,7 @@ const client = {
     new HtmlWebPackPlugin({
       template: 'src/client/index.html'
     }),
-    
+
     new ExtractTextPlugin({
       filename: "styles.css",
       allChunks: true,
