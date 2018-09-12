@@ -63,10 +63,10 @@ class ServicePage extends Component {
           <PanelBody>
             <div className="pt-10 pb-10">
               <Flex>
-                <IconBox icon={<Icon value="success" />} name="我的足迹" />
-                <IconBox icon={<Icon value="info" />} name="我的地址" />
-                <IconBox icon={<Icon value="warn" />} name="我的评价" />
-                <IconBox icon={<Icon value="waiting" />} name="我的收藏" />
+                <IconBox icon={<i className="icon iconfont icon-wodezuji" />} name="我的足迹" />
+                <IconBox icon={<i className="icon iconfont icon-dizhi" />} name="我的地址" />
+                <IconBox icon={<i className="icon iconfont icon-pingjia" />} name="我的评价" />
+                <IconBox icon={<i className="icon iconfont icon-shoucang" />} name="我的收藏" />
               </Flex>
               <div className="mt-10"></div>
               <Flex>
@@ -127,9 +127,9 @@ class ServicePage extends Component {
                 <Link to="/pm/service">
                   <IconBox icon={<Icon value="info-circle" />} name="便民服务" />
                 </Link>
-                <Link to="/pm/list/notices">
+                <a href="http://gfwy.wyglpt.com/wechat/prompt/promptList.do">
                   <IconBox icon={<Icon value="warn" />} name="社区公告" />
-                </Link>
+                </a>
                 <IconBox style={{visibility: 'hidden'}} icon={<Icon value="waiting" />} name="我的收藏" />
               </Flex>
             </div>

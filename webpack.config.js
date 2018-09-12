@@ -32,6 +32,10 @@ const moduleObj = {
       }),
     },
     {
+      test: /\.(woff|svg|eot|ttf)\??.*$/,
+      loader: 'url-loader?name=[name].[md5:hash:hex:7].[ext]'
+    },
+    {
       test: /\.(png|jpg|gif)$/,
       use: [
         {
