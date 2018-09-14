@@ -53,19 +53,19 @@ class Home extends Component {
             <TabBarItem
               active={this.state.tab == 0}
               onClick={e=>this.setState({tab:0})}
-              icon={<img src={navBtnIcon}/>}
+              icon={<icon className="icon iconfont icon-wanle icon-fs-small" />}
               label="趣·玩乐"
             />
             <TabBarItem
               active={this.state.tab == 1}
               onClick={e=>this.setState({tab:1})}
-              icon={<img src={navMsgIcon}/>}
+              icon={<icon className="icon iconfont icon-shenghuo_ icon-fs" />}
               label="享·生活"
             />
             <TabBarItem
               active={this.state.tab == 2}
               onClick={e=>this.setState({tab:2})}
-              icon={<img src={navCellIcon}/>}
+              icon={<icon className="icon iconfont icon-fuwu icon-fs" />}
               label="精·服务"
             />
           </TabBar>
