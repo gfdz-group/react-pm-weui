@@ -19,9 +19,6 @@ import {
 
 } from './components'
 import { Page, TabBar, TabBarItem, Tab, TabBody } from 'react-weui'
-import navBtnIcon from './assets/icon_nav_button.png'
-import navMsgIcon from './assets/icon_nav_msg.png'
-import navCellIcon from './assets/icon_nav_cell.png'
 import ServicePage from '../client/pages/service'
 import LifePage from '../client/pages/life'
 import AuthService from './components/auth/AuthService'
@@ -30,7 +27,6 @@ import withAuth from './components/auth/withAuth'
 class Home extends Component {
   constructor(props) {
     super(props)
-    this.auth = new AuthService();
     this.state = { tab: 2 }
   }
 
