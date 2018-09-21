@@ -65,7 +65,10 @@ const client = {
     host: '0.0.0.0',
     disableHostCheck: true,
     proxy: {
-      '/api': 'http://192.168.17.104'
+      '/api': {
+        target: 'http://192.168.17.104',
+        changeOrigin: true
+      }
     },
     port: 3000,
     historyApiFallback: true,
