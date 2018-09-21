@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 import { Page,
-  CellsTitle,
   Panel,
   PanelBody,
   PanelHeader,
   Flex,
   FlexItem,
-  Icon,
   MediaBox,
   MediaBoxHeader,
   MediaBoxBody,
@@ -76,10 +74,12 @@ class ServicePage extends Component {
                 <Link to="/pm/list/repairs">
                   <IconBox icon={<i className="icon iconfont icon-baoxiujilu icon-fs lightseagreen" />} name="报修记录" />
                 </Link>
-                <Link to="/pm/list/suggestions">
+                <Link to="/pm/list/repairs?type=2">
                   <IconBox icon={<i className="icon iconfont icon-tousu icon-fs firebrick" />} name="投诉记录" />
                 </Link>
-                <IconBox icon={<i className="icon iconfont icon-jianyi icon-fs rebeccapurple" />} name="我的建议" />
+                <Link to="/pm/list/repairs?type=3">
+                  <IconBox icon={<i className="icon iconfont icon-jianyi icon-fs rebeccapurple" />} name="我的建议" />
+                </Link>
               </Flex>
             </div>
           </PanelBody>

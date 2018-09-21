@@ -9,8 +9,6 @@ import {
   RepairList,
   Repair,
   SuggestionForm,
-  SuggestionList,
-  Suggestion,
   NoticeList,
   Notice,
   PaymentList,
@@ -21,7 +19,6 @@ import {
 import { Page, TabBar, TabBarItem, Tab, TabBody } from 'react-weui'
 import ServicePage from '../client/pages/service'
 import LifePage from '../client/pages/life'
-import AuthService from './components/auth/AuthService'
 import withAuth from './components/auth/withAuth'
 
 class Home extends Component {
@@ -82,15 +79,12 @@ const App = () => (
       <Route path="/pm/service" component={PhoneNumList} />
       {/** 缴费单详情 */}
       <Route path="/pm/payment/:id" component={Payment} />
-      {/** 保修单详情 */}
+      {/** 报修单详情 */}
       <Route path="/pm/repair/:id" component={Repair} />
-      {/** 投诉建议详情 */}
-      <Route path="/pm/suggestion/:id" component={Suggestion} />
       {/** 列表 */}
         <Route exact path="/pm/list/notices" component={NoticeList} />
         <Route exact path="/pm/list/payments" component={PaymentList} />
         <Route exact path="/pm/list/repairs" component={RepairList} />
-        <Route exact path="/pm/list/suggestions" component={SuggestionList} />
         <Route exact path="/pm/list/houses" component={HouseList} />
       {/** 表单 */}
         {/** 生活缴费 */}

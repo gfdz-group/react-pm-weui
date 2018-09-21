@@ -7,8 +7,8 @@ import RepairList from './pm/RepairList'
 import Repair from './pm/Repair'
 
 import SuggestionForm from './pm/SuggestionForm'
-import SuggestionList from './pm/SuggestionList'
-import Suggestion from './pm/Suggestion'
+// import SuggestionList from './pm/SuggestionList'
+// import Suggestion from './pm/Suggestion'
 
 import RoomPicker from './pm/RoomPicker'
 import ServicePhone from './pm/ServicePhone'
@@ -29,8 +29,8 @@ export {
   RepairList,
   Repair,
   SuggestionForm,
-  SuggestionList,
-  Suggestion,
+  // SuggestionList,
+  // Suggestion,
   ServicePhone,
   NoticeList,
   Notice,
