@@ -57,7 +57,8 @@ const client = {
   target: 'web',
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'dist/public')
+    path: path.resolve(__dirname, 'dist/public'),
+    publicPath: '/',
   },
   devtool: 'cheap-eval-source-map',
   module: moduleObj,
@@ -81,7 +82,7 @@ const client = {
 
     new ExtractTextPlugin({
       filename: "styles.css",
-      allChunks: true,
+      allChunks: true
     }),
 
     new webpack.optimize.CommonsChunkPlugin({
