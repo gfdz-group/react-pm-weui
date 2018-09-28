@@ -16,9 +16,8 @@ import iconSrc9 from '../assets/icon_nav_lfsq.png'
 }*/
 
 const data = [
-  /*Object.assign({ label: '住酒店' , icon: <icon className="icon iconfont icon-ruzhujiudian icon-fs" />, href: 'javascript:;' }),*/
-    Object.assign({ label: '住酒店' , icon: <img src={iconSrc1} />, href: 'javascript:;' }),
-  Object.assign({ label: '居养老' , icon: <img src={iconSrc2} />, href: 'javascript:;' }),
+  Object.assign({ label: '住酒店' , icon: <img src={iconSrc1} />, href: 'javascript:;' }),
+  Object.assign({ label: '居养老' , icon: <img src={iconSrc2} />, href: '/elder/provision' }),
   Object.assign({ label: '问健康' , icon: <img src={iconSrc3} />, href: 'javascript:;' }),
 
   Object.assign({ label: '接送机' ,  icon: <img src={iconSrc4} />, href: 'javascript:;' }),

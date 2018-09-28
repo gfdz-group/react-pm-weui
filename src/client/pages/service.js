@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Page,
+import {
   Panel,
   PanelBody,
   PanelHeader,
@@ -12,7 +12,7 @@ import { Page,
   MediaBoxDescription
 } from 'react-weui'
 import { Link } from 'react-router-dom'
-import { ServicePhone } from '../components'
+import ServicePhone from '../components/pm/ServicePhone'
 
 const IconBox = (props) => {
   return (
@@ -127,9 +127,9 @@ class ServicePage extends Component {
                 <Link to="/pm/service">
                   <IconBox icon={<i className="icon iconfont icon-bianminfuwu icon-fs yellowgreen" />} name="便民服务" />
                 </Link>
-                <a href="http://gfwy.wyglpt.com/wechat/prompt/promptList.do">
+                <Link to="/pm/list/notices">
                   <IconBox icon={<i className="icon iconfont icon-shequgonggao icon-fs lightseagreen" />} name="社区公告" />
-                </a>
+                </Link>
                 <IconBox style={{visibility: 'hidden'}} icon={<i className="icon iconfont icon-shoucang- icon-fs" />} name="我的收藏" />
               </Flex>
             </div>

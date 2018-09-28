@@ -1,22 +1,7 @@
 import React, { Component } from 'react'
-import { Switch, Route, Link } from 'react-router-dom'
-import {
-  HouseBinding,
-  Expense,
-  PmExpense,
-  PhoneNumList,
-  RepairForm,
-  RepairList,
-  Repair,
-  SuggestionForm,
-  NoticeList,
-  Notice,
-  PaymentList,
-  Payment,
-  HouseList
-
-} from './components'
+import { Switch, Route } from 'react-router-dom'
 import { Page, TabBar, TabBarItem, Tab, TabBody } from 'react-weui'
+import { Pm, Elder } from './components'
 import ServicePage from '../client/pages/service'
 import LifePage from '../client/pages/life'
 import withAuth from './components/auth/withAuth'
@@ -72,29 +57,10 @@ const App = () => (
   <div>
     <Home />
     <Switch style={{display: 'none'}}>
-      <Route path="/binding" component={HouseBinding} />
-      {/** 公告详情 */}
-      <Route path="/pm/notice/:id" component={Notice} />
-      {/** 便民服务 */}
-      <Route path="/pm/service" component={PhoneNumList} />
-      {/** 缴费单详情 */}
-      <Route path="/pm/payment/:id" component={Payment} />
-      {/** 报修单详情 */}
-      <Route path="/pm/repair/:id" component={Repair} />
-      {/** 列表 */}
-        <Route exact path="/pm/list/notices" component={NoticeList} />
-        <Route exact path="/pm/list/payments" component={PaymentList} />
-        <Route exact path="/pm/list/repairs" component={RepairList} />
-        <Route exact path="/pm/list/houses" component={HouseList} />
-      {/** 表单 */}
-        {/** 生活缴费 */}
-        <Route path="/pm/expense" component={Expense} />
-        {/** 物业缴费 */}
-        <Route path="/pm/pm-expense" component={PmExpense} />
-        {/** 物业报修 */}
-        <Route exact path="/pm/repair" component={RepairForm} />
-        {/** 投诉建议 */}
-        <Route exact path="/pm/suggestion" component={SuggestionForm} />
+      {/** 物业 */}
+      <Route path="/pm" component={Pm} />
+      {/** 养老 */}
+      <Route path ="/elder" component={Elder} />
     </Switch>
   </div>
 )

@@ -3,6 +3,8 @@ import {
   Page,
   Article,
 } from 'react-weui'
+import Loading from '../Loading'
+import AuthService from '../auth/AuthService'
 
 /** data mocking */
 const notice = {
@@ -13,22 +15,46 @@ const notice = {
 }
 
 class Notice extends Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
+    this.auth = new AuthService()
     this.state = {
-      notice: notice
+      notice: {},
+      isLoading: false,
+    }
+  }
+
+  fetch(id) {
+    this.setState({ isLoading: true })
+    this.auth.fetch(`/api/prompt/prompt.do?id=${id}`)
+      .then(res => {
+        this.setState({ notice: res.obj, isLoading: false })
+      })
+  }
+
+  rawHtml(html) {
+    return { __html: html }
+  }
+
+  componentDidMount() {
+    const { match } = this.props
+    const { params } = match
+    if (params.id) {
+      this.fetch(params.id)
     }
   }
 
   render() {
+    const { notice, isLoading } = this.state
     return (
-      <Page class="notice-detail">
+      <Page class="notice-detail" infiniteLoader={false}>
+        <Loading show={isLoading} />
         <Article>
-          <h2>{this.state.notice.title}</h2>
+          <h2>{notice.title}</h2>
           <br />
           <section>
-            <p>{this.state.notice.content}</p>
-            <small>{this.state.notice.publishAt}</small>
+            <p dangerouslySetInnerHTML={this.rawHtml(notice.content)}></p>
+            <small>{notice.createDate}</small>
           </section>
         </Article>
       </Page>
