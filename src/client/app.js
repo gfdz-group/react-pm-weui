@@ -14,7 +14,7 @@ class Home extends Component {
 
   render() {
     return (
-      <Page infiniteLoader={false}>
+      <Page infiniteLoader={false} ptr={false}>
         <Tab>
           <TabBody>
             <div  style={{display: this.state.tab == 0 ? null : 'none'}}>
@@ -55,8 +55,9 @@ class Home extends Component {
 
 const App = () => (
   <div>
-    <Home />
     <Switch style={{display: 'none'}}>
+      {/** 主页 */}
+      <Route exact path="/" component={Home} />
       {/** 物业 */}
       <Route path="/pm" component={Pm} />
       {/** 养老 */}

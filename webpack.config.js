@@ -3,6 +3,7 @@ const autoprefixer = require('autoprefixer');
 const nodeExternals = require('webpack-node-externals')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const webpack = require('webpack')
 
 const moduleObj = {
@@ -93,6 +94,12 @@ const client = {
     new webpack.optimize.UglifyJsPlugin({
       output: { comments: false },
     }),
+
+    new CopyWebpackPlugin([
+      { from: 'src/client/assets/map-banner.png', to: 'assets/map-banner.png' },
+      { from: 'src/client/assets/slide01.jpg', to: 'assets/slide01.jpg' },
+      { from: 'src/client/assets/slide02.jpg', to: 'assets/slide02.jpg' },
+    ]),
   ]
 }
 
