@@ -38,7 +38,7 @@ class NoticeList extends Component {
           isLoading: false
         })
       })
-      .then(callback);
+      .then(callback)
   }
 
   componentDidMount() {

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-//import axios from 'axios'
 import {
   Button,
   ButtonArea,
@@ -13,7 +12,7 @@ import {
   Label,
   Input,
   Picker,
-  Select } from 'react-weui'
+} from 'react-weui'
 
 /** data mocking */
 const estateOpts = [{
@@ -70,7 +69,7 @@ class Binding extends Component {
       roomLabel: '',
       roomId: '',
       roomPickerShow: false,
-      
+
       owner: null, /** 用户姓名 */
       mobile: null, /** 手机号码 */
       captcha: null, /** 验证码 */

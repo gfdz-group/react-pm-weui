@@ -14,7 +14,7 @@ import {
   Button
 } from 'react-weui'
 import RoomPicker from './RoomPicker'
-import ImageUploader from './ImageUploader'
+import ImageUploader from '../ImageUploader'
 
 const repairTypeOpts = [{
 	name: '公共区域报修',

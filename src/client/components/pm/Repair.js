@@ -24,7 +24,7 @@ const ticket = {
 class Repair extends Component {
   render() {
     return (
-      <Page className="repair-detail" infiniteLoader={false}>
+      <Page className="repair-detail" infiniteLoader={false} ptr={false}>
         <Preview>
           <PreviewBody>
             <PreviewItem label="单号" value={ticket.id}></PreviewItem>

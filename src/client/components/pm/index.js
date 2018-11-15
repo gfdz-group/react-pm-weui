@@ -1,7 +1,6 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
-// 物业管理
 import HouseBinding from './Binding'
 import Expense from './Expense'
 import PmExpense from './PmExpense'
@@ -24,15 +23,18 @@ export default () => {
       {/** 公告详情 */}
       <Route path="/pm/notice/:id" component={Notice} />
       {/** 便民服务 */}
-      <Route path="/service" component={PhoneNumList} />
+      <Route path="/pm/service" component={PhoneNumList} />
       {/** 缴费单详情 */}
       <Route path="/pm/payment/:id" component={Payment} />
       {/** 报修单详情 */}
       <Route path="/pm/repair/:id" component={Repair} />
-      {/** 列表 */}
+      {/** 社区公告 */}
       <Route exact path="/pm/list/notices" component={NoticeList} />
+      {/** 缴费记录 */}
       <Route exact path="/pm/list/payments" component={PaymentList} />
+      {/** 报修记录 */}
       <Route exact path="/pm/list/repairs" component={RepairList} />
+      {/** 房源信息 */}
       <Route exact path="/pm/list/houses" component={HouseList} />
       {/** 生活缴费 */}
       <Route path="/pm/expense" component={Expense} />

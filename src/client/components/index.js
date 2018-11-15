@@ -1,4 +1,5 @@
-import Pm from './pm' // 物业管理
-import Elder from './elder' // 养老公寓
+import Pm from './pm'
+import Elder from './elder'
+import OA from './oa'
 
-export { Pm, Elder }
+export { Pm, Elder, OA }

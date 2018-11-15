@@ -15,7 +15,7 @@ import {
   Button
 } from 'react-weui'
 import RoomPicker from './RoomPicker'
-import ImageUploader from './ImageUploader'
+import ImageUploader from '../ImageUploader'
 
 const suggestionTypeOpts = [{
   name: '建议',

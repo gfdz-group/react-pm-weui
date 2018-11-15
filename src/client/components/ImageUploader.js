@@ -4,20 +4,24 @@ import {
   CellBody,
   Uploader
 } from 'react-weui'
-import thumbSrc from '../../assets/thumb.png'
 
-const files = [
-  { url: thumbSrc },
-  { url: thumbSrc, error: true },
-  { url: thumbSrc, status: '48%' },
-];
+import AuthService from '../components/auth/AuthService'
 
 class ImageUploader extends Component {
   constructor(props) {
     super(props)
+    this.auth = new AuthService();
     this.state = {
-      files: files,
+      files: [],
     }
+    this.upload = this.upload.bind(this)
+  }
+
+  upload(file) {
+    this.auth.fetch('/api/jwt/uploadFile.do', {
+      method: 'POST',
+      body: JSON.stringify({ file: file.data })
+    })
   }
 
   render() {
@@ -27,6 +31,7 @@ class ImageUploader extends Component {
           <Uploader
             title="添加照片"
             files={this.state.files}
+            onChange={file => this.upload(file)}
           />
         </CellBody>
       </FormCell>
